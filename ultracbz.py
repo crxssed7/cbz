@@ -14,7 +14,6 @@ def main(path, name, chp_name):
 if __name__ == '__main__':
     path = input("Enter the path to a directory of chapters: ")
     name = input("Enter the name of the manga series: ")
-    # Get all of Komi chapters
     dirs = os.listdir(path)
     for _dir in dirs:
         main(os.path.join(path, _dir), name, _dir)
