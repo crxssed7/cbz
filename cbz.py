@@ -1,14 +1,16 @@
 import os
 import sys
+import random
+import string
 from shutil import make_archive
 
 def main(path):
     # Get all the files in the directory
     if os.path.exists(path):
-        chp_name = os.path.basename(path)
-        name = input("What is the name of the comic? ")
-        make_archive(name + ' ' + chp_name, "zip", path)
-        os.rename(name + ' ' + chp_name + '.zip', name + ' ' + chp_name + '.cbz')
+        basename = os.path.basename(path)
+        chp_name = basename if basename else 'Output ' + ''.join(random.choices(string.ascii_lowercase, k=5))
+        make_archive(chp_name, "zip", path)
+        os.rename(chp_name + '.zip', chp_name + '.cbz')
     else:
         print('That is not a valid directory')
 
